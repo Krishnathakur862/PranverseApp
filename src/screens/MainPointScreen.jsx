@@ -7,8 +7,12 @@ import {
   StyleSheet,
   Dimensions,
   ImageBackground,
+  Platform,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const MainPointScreen = () => {
   const navigation = useNavigation();
@@ -18,60 +22,50 @@ const MainPointScreen = () => {
       source={require('../assets/welcome-bg.jpg')}
       style={styles.background}
       resizeMode="cover"
+      blurRadius={Platform.OS === 'ios' ? 2 : 1}
     >
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Text style={styles.headerBig}>Kundli & Daily Puja</Text>
+      
 
-        <View style={styles.cardRow}>
-          <FeatureCard title="Horoscope" icon="🔮" />
-          <FeatureCard title="Panchang" icon="📅" />
-          <FeatureCard title="Daily Tarot" icon="🃏" />
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <Text style={styles.welcomeText}>Welcome to Pranverse ✨</Text>
+
+        {/* Feature Rows */}
+        <View style={styles.row}>
+          <FeatureCard title="Services" icon="hands-pray" onPress={() => navigation.navigate('Services')} />
+          <FeatureCard title="Products" icon="shopping" onPress={() => navigation.navigate('Products')} />
+          <FeatureCard title="Courses" icon="book-open-page-variant" onPress={() => navigation.navigate('Courses')} />
         </View>
 
-        <BannerCard
-          title="Daily Puja"
-          icon="🙏"
-          description="Connect With Your Beloved God"
-          buttonText="Get Blessings"
-        />
+        
 
+        {/* Banners */}
         <BannerCard
           title="Free Tarot Reading"
-          icon="🧿"
-          description="Get The Answers And Insights You Need"
-          buttonText="Get Started"
+          icon="cards-playing-outline"
+          description="Get answers & insights you need"
+          buttonText="Start Reading"
+          onPress={() => alert('Tarot clicked')}
         />
 
-        <View style={styles.cardRow}>
-          <FeatureCard title="Kundli" icon="📜" />
-          <FeatureCard title="Match Making" icon="💍" />
-          <FeatureCard title="Love Compatibility" icon="❤" />
-        </View>
+        
 
-        <TouchableOpacity
-          style={styles.nextButton}
-          onPress={() => navigation.navigate('RecommendationScreen')}
-        >
-          <Text style={styles.nextButtonText}>Next</Text>
-        </TouchableOpacity>
       </ScrollView>
     </ImageBackground>
   );
 };
 
-const FeatureCard = ({ title, icon }) => (
-  <View style={styles.featureCard}>
-    <Text style={styles.cardIcon}>{icon}</Text>
-    <Text style={styles.cardText}>{title}</Text>
-  </View>
+const FeatureCard = ({ title, icon, onPress }) => (
+  <TouchableOpacity style={styles.featureCard} onPress={onPress}>
+    <Icon name={icon} size={26} color="#B88A3B" />
+    <Text style={styles.featureText}>{title}</Text>
+  </TouchableOpacity>
 );
 
-const BannerCard = ({ title, icon, description, buttonText }) => (
+const BannerCard = ({ title, icon, description, buttonText, onPress }) => (
   <View style={styles.bannerCard}>
-    <Text style={styles.bannerIcon}>{icon}</Text>
-    <Text style={styles.bannerTitle}>{title}</Text>
+    <Text style={styles.bannerTitle}><Icon name={icon} size={20} /> {title}</Text>
     <Text style={styles.bannerDescription}>{description}</Text>
-    <TouchableOpacity style={styles.bannerButton}>
+    <TouchableOpacity style={styles.bannerButton} onPress={onPress}>
       <Text style={styles.bannerButtonText}>{buttonText}</Text>
     </TouchableOpacity>
   </View>
@@ -80,105 +74,76 @@ const BannerCard = ({ title, icon, description, buttonText }) => (
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    width: '100%',
-    height: '100%',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: 'rgba(255,255,255,0.85)',
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#B88A3B',
   },
   scrollContent: {
     padding: 16,
-    alignItems: 'center',
   },
-  headerSmall: {
-    fontSize: 20,
-    color: '#5F5F5F',
-    fontWeight: '400',
-    textAlign: 'center',
-  },
-  headerBig: {
-    fontSize: 28,
-    color: '#B88A3B',
+  welcomeText: {
+    fontSize: 22,
+    color: '#fff',
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
   },
-  cardRow: {
+  row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 24,
-    width: '100%',
+    marginBottom: 16,
   },
   featureCard: {
-    backgroundColor: '#FFFFFF80',
-    borderRadius: 16,
-    width: Dimensions.get('window').width / 3 - 24,
-    height: 100,
+    backgroundColor: '#fff',
+    width: (SCREEN_WIDTH - 64) / 3,
+    padding: 12,
+    borderRadius: 12,
     alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#B88A3B',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
+    elevation: 3,
   },
-  cardIcon: {
-    fontSize: 28,
-    marginBottom: 6,
-  },
-  cardText: {
-    fontSize: 14,
+  featureText: {
+    fontSize: 13,
     fontWeight: '600',
-    color: '#5F5F5F',
     textAlign: 'center',
+    marginTop: 6,
   },
   bannerCard: {
-    backgroundColor: '#FFFFFF80',
-    borderRadius: 16,
+    backgroundColor: '#fff',
     padding: 20,
-    marginBottom: 24,
-    alignItems: 'center',
-    shadowColor: '#B88A3B',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    width: '100%',
-  },
-  bannerIcon: {
-    fontSize: 32,
-    marginBottom: 8,
+    borderRadius: 20,
+    marginBottom: 20,
+    elevation: 4,
   },
   bannerTitle: {
-    fontSize: 20,
-    fontWeight: '700',
+    fontSize: 18,
+    fontWeight: 'bold',
     color: '#B88A3B',
+    marginBottom: 8,
   },
   bannerDescription: {
     fontSize: 14,
-    color: '#5F5F5F',
-    textAlign: 'center',
-    marginVertical: 8,
+    marginBottom: 12,
+    color: '#555',
   },
   bannerButton: {
-    backgroundColor: '#F6AFAF',
-    paddingHorizontal: 16,
+    backgroundColor: '#B88A3B',
     paddingVertical: 10,
-    borderRadius: 20,
-    marginTop: 4,
+    borderRadius: 30,
+    alignItems: 'center',
   },
   bannerButtonText: {
-    color: '#FFFFFF',
-    fontWeight: '600',
-    fontSize: 14,
-  },
-  nextButton: {
-    backgroundColor: '#F6AFAF',
-    paddingHorizontal: 40,
-    paddingVertical: 14,
-    borderRadius: 30,
-    marginTop: 20,
-    marginBottom: 40,
-  },
-  nextButtonText: {
     color: '#fff',
+    fontWeight: '600',
     fontSize: 16,
-    fontWeight: '700',
   },
 });
 

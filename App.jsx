@@ -1,17 +1,25 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import Navigation from './src/Navigation/navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const App=()=> {
+import WelcomeScreen from './src/screens/WelcomeScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import SignupScreen from './src/screens/SignupScreen';
+import ReadyToHeal from './src/screens/ReadyToHeal';
+import BottomTabNavigator from './src/navigation/BottomTabNavigator';
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
   return (
-    <View style={styles.container}>
-      <Navigation/>
-    </View>
+    <NavigationContainer> {/* ✅ This was missing */}
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Signup" component={SignupScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ReadyToHeal" component={ReadyToHeal} options={{ headerShown: false }} />
+        <Stack.Screen name="Dashboard" component={BottomTabNavigator} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

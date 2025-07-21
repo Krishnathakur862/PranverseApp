@@ -1,4 +1,3 @@
-// src/Screen/LoginScreen.jsx
 import React, { useState } from 'react';
 import {
   View,
@@ -9,6 +8,7 @@ import {
   ImageBackground,
   Alert,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
@@ -17,7 +17,7 @@ export default function LoginScreen({ navigation }) {
   const handleLogin = () => {
     if (email && password) {
       Alert.alert('Login Successful', `Welcome back, ${email}!`);
-      navigation.navigate('Welcome');
+      navigation.navigate('ReadyToHeal');
     } else {
       Alert.alert('Error', 'Please enter email and password');
     }
@@ -25,26 +25,37 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <ImageBackground
-source={require('../assets/welcome-bg.jpg')}
-
-    style={styles.bg}
+      source={require('../assets/welcome-bg.jpg')}
+      style={styles.container}
     >
-      <View style={styles.container}>
-        <Text style={styles.title}>Login to Pranverse</Text>
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          style={styles.input}
-          keyboardType="email-address"
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          style={styles.input}
-          secureTextEntry
-        />
+      <View style={styles.inner}>
+        <Text style={styles.title}>Welcome Back</Text>
+
+        <View style={styles.inputContainer}>
+          <Icon name="email" size={20} color="#B88A3B" style={styles.icon} />
+          <TextInput
+            placeholder="Enter your email"
+            placeholderTextColor="#999"
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Icon name="lock" size={20} color="#B88A3B" style={styles.icon} />
+          <TextInput
+            placeholder="Enter your password"
+            placeholderTextColor="#999"
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+        </View>
+
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
@@ -58,43 +69,63 @@ source={require('../assets/welcome-bg.jpg')}
 }
 
 const styles = StyleSheet.create({
-  bg: {
+  container: {
     flex: 1,
     justifyContent: 'center',
   },
-  container: {
-    padding: 24,
-    backgroundColor: 'rgba(255,255,255,0.2)',
+  inner: {
+    paddingHorizontal: 30,
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
     margin: 20,
-    borderRadius: 16,
+    borderRadius: 20,
+    paddingVertical: 30,
   },
   title: {
-    fontSize: 26,
-    fontWeight: 'bold',
+    fontSize: 28,
     color: '#B88A3B',
-    marginBottom: 24,
+    fontWeight: 'bold',
     textAlign: 'center',
+    marginBottom: 30,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+  icon: {
+    marginRight: 8,
   },
   input: {
-    backgroundColor: '#fff',
-    padding: 12,
-    marginBottom: 16,
-    borderRadius: 10,
+    flex: 1,
+    paddingVertical: 12,
+    color: '#333',
   },
   button: {
-    backgroundColor: '#F6AFAF',
+    backgroundColor: '#B88A3B',
     padding: 14,
-    borderRadius: 30,
+    borderRadius: 10,
     alignItems: 'center',
-    marginBottom: 12,
+    marginTop: 10,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 4,
+    elevation: 5,
   },
   buttonText: {
     color: '#fff',
-    fontWeight: '600',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   link: {
-    color: '#B88A3B',
     textAlign: 'center',
-    marginTop: 10,
+    color: '#444',
+    textDecorationLine: 'underline',
   },
 });
