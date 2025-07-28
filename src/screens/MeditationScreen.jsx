@@ -461,15 +461,14 @@ import {
 } from 'react-native';
 
 export default function MeditationScreen() {
-  const [secondsLeft, setSecondsLeft] = useState(60); // default 1 min
+  const [secondsLeft, setSecondsLeft] = useState(60); 
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [minutesInput, setMinutesInput] = useState('');
   const [secondsInput, setSecondsInput] = useState('');
-  const [initialTime, setInitialTime] = useState(60); // for reset
-
+  const [initialTime, setInitialTime] = useState(60); 
   const startTimer = () => {
     if (!isRunning && secondsLeft > 0) {
       setIsRunning(true);
@@ -505,7 +504,7 @@ export default function MeditationScreen() {
     const totalSeconds = mins * 60 + secs;
     if (totalSeconds > 0) {
       setSecondsLeft(totalSeconds);
-      setInitialTime(totalSeconds); // Save for reset
+      setInitialTime(totalSeconds); 
       setModalVisible(false);
       setMinutesInput('');
       setSecondsInput('');
@@ -561,7 +560,7 @@ export default function MeditationScreen() {
           </>
         )}
 
-        {/* Modal for Time Input */}
+      
         <Modal
           visible={modalVisible}
           transparent={true}

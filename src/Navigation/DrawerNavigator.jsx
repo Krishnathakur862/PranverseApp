@@ -7,6 +7,7 @@ import CoursesScreen from '../screens/CoursesScreen';
 import MeditationScreen from '../screens/MeditationScreen';
 import MyCoursesScreen from '../screens/MyCoursesScreen';
 import MyBookingsScreen from '../screens/MyBookingScreen';
+import EditProfile from '../screens/EditProfile';
 
 const Drawer = createDrawerNavigator();
 
@@ -20,6 +21,7 @@ export default function DrawerStack() {
       <Drawer.Screen name="Meditation" component={MeditationScreen} />
       <Drawer.Screen name="MyCourses" component={MyCoursesScreen} />
       <Drawer.Screen name="MyBookings" component={MyBookingsScreen} />
+       <Drawer.Screen name="EditProfile" component={EditProfile} />
     </Drawer.Navigator>
   );
 }

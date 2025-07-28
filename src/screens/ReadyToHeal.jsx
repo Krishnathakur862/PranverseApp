@@ -22,7 +22,7 @@ const ReadyToHeal = ({ navigation }) => {
 
         <TouchableOpacity
   style={styles.button}
-  onPress={() => navigation.navigate('Dashboard')} // 
+  onPress={() => navigation.navigate('Dashboard')} 
 >
   <Text style={styles.buttonText}>Start Healing</Text>
 </TouchableOpacity>

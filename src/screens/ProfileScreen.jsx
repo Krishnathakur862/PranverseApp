@@ -23,15 +23,57 @@ export default function ProfileScreen() {
 
       
       <View style={styles.infoCard}>
-        <Text style={styles.infoLabel}>👤 Name</Text>
+        <Text style={styles.infoLabel}> Name</Text>
         <Text style={styles.infoValue}>Krishna Thakur</Text>
       </View>
 
       <View style={styles.infoCard}>
-        <Text style={styles.infoLabel}>📧 Email</Text>
+        <Text style={styles.infoLabel}>Email</Text>
         <Text style={styles.infoValue}>krishnavthakur7@gmail.com</Text>
       </View>
 
+      <View style={styles.infoCard}>
+        <Text style={styles.infoLabel}>Date of Birth</Text>
+        <Text style={styles.infoValue}> 7 September 2007</Text>
+      </View>
+
+      <View style={styles.infoCard}>
+        <Text style={styles.infoLabel}>Time of Birth</Text>
+        <Text style={styles.infoValue}>00000</Text>
+      </View>
+
+      <View style={styles.infoCard}>
+        <Text style={styles.infoLabel}>Birth Place</Text>
+        <Text style={styles.infoValue}>Yeola</Text>
+      </View>
+
+      <View style={styles.infoCard}>
+        <Text style={styles.infoLabel}>Mulank</Text>
+        <Text style={styles.infoValue}>12</Text>
+      </View>
+
+      <View style={styles.infoCard}>
+        <Text style={styles.infoLabel}>Bhagank</Text>
+        <Text style={styles.infoValue}>32</Text>
+      </View>
+
+      <View style={styles.infoCard}>
+        <Text style={styles.infoLabel}>zodiac Sign</Text>
+        <Text style={styles.infoValue}>fbgkjd</Text>
+      </View>
+
+      <View style={styles.infoCard}>
+        <Text style={styles.infoLabel}>Gender</Text>
+        <Text style={styles.infoValue}>female</Text>
+      </View>
+
+      <View style={styles.infoCard}>
+        <Text style={styles.infoLabel}>Nakshatra</Text>
+        <Text style={styles.infoValue}>bjffk</Text>
+      </View>
+
+     
+      
       {/* Edit Profile button */}
       <TouchableOpacity
         style={styles.editButton}
@@ -62,7 +104,7 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 60,
     borderWidth: 2,
-    borderColor: '#B88A3B',
+    borderColor: '#c2964aff',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 30,

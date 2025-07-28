@@ -36,9 +36,6 @@ const MainPointScreen = () => {
           <FeatureCard title="Courses" icon="book-open-page-variant" onPress={() => navigation.navigate('Courses')} />
         </View>
 
-        
-
-        {/* Banners */}
         <BannerCard
           title="Free Tarot Reading"
           icon="cards-playing-outline"
@@ -46,10 +43,7 @@ const MainPointScreen = () => {
           buttonText="Start Reading"
           onPress={() => alert('Tarot clicked')}
         />
-
-        
-
-      </ScrollView>
+          </ScrollView>
     </ImageBackground>
   );
 };
