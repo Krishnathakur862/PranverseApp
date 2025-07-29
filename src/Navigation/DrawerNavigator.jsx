@@ -11,7 +11,9 @@ import EditProfile from '../screens/EditProfile';
 import ProfileScreen from '../screens/ProfileScreen';
 import NotificationScreen from '../screens/NotificationsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-
+import BirthChartGenerator from '../screens/BirthChartGenerator'
+import Products from '../screens/Products';
+import LoveCompatibility from '../screens/LoveCompatibility';
 const Drawer = createDrawerNavigator();
 
 
@@ -28,10 +30,9 @@ export default function DrawerStack() {
       <Drawer.Screen name="MyBookings" component={MyBookingsScreen} />
       <Drawer.Screen name="Notification" component={NotificationScreen} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
-
-
-
-       
+      <Drawer.Screen name="BirthChartGenerator" component={BirthChartGenerator } />
+      <Drawer.Screen name="Productstobuy" component={Products} />
+       <Drawer.Screen name="LoveCompatibility" component={LoveCompatibility} />
     </Drawer.Navigator>
   );
 }

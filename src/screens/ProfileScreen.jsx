@@ -8,22 +8,21 @@ import {
   ScrollView,
 } from 'react-native';
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Your Profile</Text>
 
-      {/* Profile Image */}
       <View style={styles.profileImagePlaceholder}>
         <Image
-          source={require('../assets/krish2.jpg')} 
+          source={require('../assets/krish2.jpg')}
           style={styles.profileImage}
         />
       </View>
 
-      
+      {/* Profile Details */}
       <View style={styles.infoCard}>
-        <Text style={styles.infoLabel}> Name</Text>
+        <Text style={styles.infoLabel}>Name</Text>
         <Text style={styles.infoValue}>Krishna Thakur</Text>
       </View>
 
@@ -34,7 +33,7 @@ export default function ProfileScreen() {
 
       <View style={styles.infoCard}>
         <Text style={styles.infoLabel}>Date of Birth</Text>
-        <Text style={styles.infoValue}> 7 September 2007</Text>
+        <Text style={styles.infoValue}>7 September 2007</Text>
       </View>
 
       <View style={styles.infoCard}>
@@ -58,7 +57,7 @@ export default function ProfileScreen() {
       </View>
 
       <View style={styles.infoCard}>
-        <Text style={styles.infoLabel}>zodiac Sign</Text>
+        <Text style={styles.infoLabel}>Zodiac Sign</Text>
         <Text style={styles.infoValue}>fbgkjd</Text>
       </View>
 
@@ -72,13 +71,11 @@ export default function ProfileScreen() {
         <Text style={styles.infoValue}>bjffk</Text>
       </View>
 
-     
-      
       {/* Edit Profile button */}
       <TouchableOpacity
         style={styles.editButton}
         activeOpacity={0.8}
-        onPress={() => alert('Edit Profile clicked')}
+        onPress={() => navigation.navigate('EditProfile')}
       >
         <Text style={styles.editButtonText}>Edit Profile</Text>
       </TouchableOpacity>

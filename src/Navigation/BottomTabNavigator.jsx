@@ -26,15 +26,7 @@ export default function BottomTabs() {
             case 'Dashboard':
               iconName = 'grid';
               break;
-            case 'Notifications':
-              iconName = 'notifications';
-              break;
-            case 'Profile':
-              iconName = 'person';
-              break;
-            case 'Settings':
-              iconName = 'settings';
-              break;
+           
             case 'More':
               iconName = 'apps'; // or 'menu'
               break;
@@ -53,9 +45,6 @@ export default function BottomTabs() {
       })}
     >
       <Tab.Screen name="Dashboard" component={MainPointScreen} />
-      <Tab.Screen name="Notifications" component={NotificationsScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
       <Tab.Screen name="More" component={DrawerStack} />
     </Tab.Navigator>
   );
