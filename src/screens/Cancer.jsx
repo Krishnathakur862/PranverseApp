@@ -1,39 +1,39 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 
-const Gemini = () => {
+const Cancer = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFBEF" />
 
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        {/* 1. About Gemini */}
+        {/* 1. About Cancer */}
         <View style={styles.card}>
-          <Text style={styles.title}>♊ About Gemini</Text>
+          <Text style={styles.title}>♋ About Cancer</Text>
           <Text style={styles.text}>
-            Gemini (May 21 - June 20) is an air sign ruled by Mercury. Known for their dual nature, Geminis are curious, adaptable, witty, and social. They are great communicators and often juggle multiple interests at once. Their versatility makes them engaging conversationalists and quick thinkers.
+            Cancer (June 21 - July 22) is a water sign ruled by the Moon. Known for their deep emotional sensitivity, intuition, and nurturing nature, Cancers are protective and compassionate. They are deeply connected to family and home and often put others' needs before their own.
           </Text>
         </View>
 
         {/* 2. Things to Do */}
         <View style={styles.card}>
-          <Text style={styles.title}>✅ Things Gemini Should Do</Text>
+          <Text style={styles.title}>✅ Things Cancer Should Do</Text>
           <Text style={styles.text}>
-            • Engage in social activities and meet new people{'\n'}
-            • Explore hobbies that involve communication or creativity (e.g. writing, podcasting){'\n'}
-            • Stay mentally stimulated with books, games, or travel{'\n'}
-            • Practice active listening and mindfulness
+            • Spend quality time with loved ones and nurture close relationships{'\n'}
+            • Express emotions through art, journaling, or conversations{'\n'}
+            • Create a comfortable and safe home environment{'\n'}
+            • Trust your intuition and honor your emotional needs
           </Text>
         </View>
 
         {/* 3. Things to Avoid */}
         <View style={styles.card}>
-          <Text style={styles.title}>🚫 Things Gemini Should Avoid</Text>
+          <Text style={styles.title}>🚫 Things Cancer Should Avoid</Text>
           <Text style={styles.text}>
-            • Overcommitting or multitasking excessively{'\n'}
-            • Gossiping or speaking without thinking{'\n'}
-            • Avoiding emotional depth in relationships{'\n'}
-            • Being inconsistent or unreliable
+            • Holding onto the past or emotional baggage{'\n'}
+            • Retreating into your shell when hurt instead of communicating{'\n'}
+            • Becoming overly dependent or clingy in relationships{'\n'}
+            • Neglecting self-care while taking care of others
           </Text>
         </View>
       </ScrollView>
@@ -41,7 +41,7 @@ const Gemini = () => {
   );
 };
 
-export default Gemini;
+export default Cancer;
 
 const styles = StyleSheet.create({
   container: {

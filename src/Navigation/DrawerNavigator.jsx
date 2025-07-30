@@ -14,6 +14,12 @@ import SettingsScreen from '../screens/SettingsScreen';
 import BirthChartGenerator from '../screens/BirthChartGenerator'
 import Products from '../screens/Products';
 import LoveCompatibility from '../screens/LoveCompatibility';
+import ZodiacSigns from '../screens/ZodiacSigns';
+import Gemini from '../screens/Gemini';
+import Aries from '../screens/Aries';
+import Taurus from '../screens/Taurus';
+import Cancer from '../screens/Cancer';
+
 const Drawer = createDrawerNavigator();
 
 
@@ -33,6 +39,12 @@ export default function DrawerStack() {
       <Drawer.Screen name="BirthChartGenerator" component={BirthChartGenerator } />
       <Drawer.Screen name="Productstobuy" component={Products} />
        <Drawer.Screen name="LoveCompatibility" component={LoveCompatibility} />
+       <Drawer.Screen name="ZodiacSigns" component={ZodiacSigns} />
+       <Drawer.Screen name="Aries" component={Aries} />
+      <Drawer.Screen name="Taurus" component={Taurus} />
+      <Drawer.Screen name="Gemini" component={Gemini} />
+      <Drawer.Screen name="Cancer" component={Cancer} />
+    
     </Drawer.Navigator>
   );
 }

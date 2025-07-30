@@ -1,39 +1,39 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 
-const Gemini = () => {
+const Taurus = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFBEF" />
 
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        {/* 1. About Gemini */}
+        {/* 1. About Taurus */}
         <View style={styles.card}>
-          <Text style={styles.title}>♊ About Gemini</Text>
+          <Text style={styles.title}>♉ About Taurus</Text>
           <Text style={styles.text}>
-            Gemini (May 21 - June 20) is an air sign ruled by Mercury. Known for their dual nature, Geminis are curious, adaptable, witty, and social. They are great communicators and often juggle multiple interests at once. Their versatility makes them engaging conversationalists and quick thinkers.
+            Taurus (April 20 - May 20) is an earth sign ruled by Venus. Known for their reliability, patience, and love of comfort, Taureans are grounded and dependable. They appreciate beauty, art, and stability in their environment and relationships.
           </Text>
         </View>
 
         {/* 2. Things to Do */}
         <View style={styles.card}>
-          <Text style={styles.title}>✅ Things Gemini Should Do</Text>
+          <Text style={styles.title}>✅ Things Taurus Should Do</Text>
           <Text style={styles.text}>
-            • Engage in social activities and meet new people{'\n'}
-            • Explore hobbies that involve communication or creativity (e.g. writing, podcasting){'\n'}
-            • Stay mentally stimulated with books, games, or travel{'\n'}
-            • Practice active listening and mindfulness
+            • Create a cozy, aesthetically pleasing living space{'\n'}
+            • Engage in hobbies involving art, music, or nature{'\n'}
+            • Set and work steadily toward financial and personal goals{'\n'}
+            • Practice flexibility and openness to change
           </Text>
         </View>
 
         {/* 3. Things to Avoid */}
         <View style={styles.card}>
-          <Text style={styles.title}>🚫 Things Gemini Should Avoid</Text>
+          <Text style={styles.title}>🚫 Things Taurus Should Avoid</Text>
           <Text style={styles.text}>
-            • Overcommitting or multitasking excessively{'\n'}
-            • Gossiping or speaking without thinking{'\n'}
-            • Avoiding emotional depth in relationships{'\n'}
-            • Being inconsistent or unreliable
+            • Being overly stubborn or resistant to new ideas{'\n'}
+            • Overindulging in food, comfort, or material things{'\n'}
+            • Avoiding necessary changes or risks{'\n'}
+            • Becoming possessive in relationships
           </Text>
         </View>
       </ScrollView>
@@ -41,7 +41,7 @@ const Gemini = () => {
   );
 };
 
-export default Gemini;
+export default Taurus;
 
 const styles = StyleSheet.create({
   container: {

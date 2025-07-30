@@ -1,39 +1,39 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 
-const Gemini = () => {
+const Aries = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFBEF" />
 
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        {/* 1. About Gemini */}
+        {/* 1. About Aries */}
         <View style={styles.card}>
-          <Text style={styles.title}>♊ About Gemini</Text>
+          <Text style={styles.title}>♈ About Aries</Text>
           <Text style={styles.text}>
-            Gemini (May 21 - June 20) is an air sign ruled by Mercury. Known for their dual nature, Geminis are curious, adaptable, witty, and social. They are great communicators and often juggle multiple interests at once. Their versatility makes them engaging conversationalists and quick thinkers.
+            Aries (March 21 - April 19) is a fire sign ruled by Mars. Known for their courage, enthusiasm, and leadership qualities, Aries individuals are energetic and passionate. They are natural-born leaders who thrive on challenges and are always ready to take initiative.
           </Text>
         </View>
 
         {/* 2. Things to Do */}
         <View style={styles.card}>
-          <Text style={styles.title}>✅ Things Gemini Should Do</Text>
+          <Text style={styles.title}>✅ Things Aries Should Do</Text>
           <Text style={styles.text}>
-            • Engage in social activities and meet new people{'\n'}
-            • Explore hobbies that involve communication or creativity (e.g. writing, podcasting){'\n'}
-            • Stay mentally stimulated with books, games, or travel{'\n'}
-            • Practice active listening and mindfulness
+            • Take on leadership roles or start new projects{'\n'}
+            • Channel energy into physical activities like sports or workouts{'\n'}
+            • Set personal goals and work towards them with focus{'\n'}
+            • Practice patience and think before acting
           </Text>
         </View>
 
         {/* 3. Things to Avoid */}
         <View style={styles.card}>
-          <Text style={styles.title}>🚫 Things Gemini Should Avoid</Text>
+          <Text style={styles.title}>🚫 Things Aries Should Avoid</Text>
           <Text style={styles.text}>
-            • Overcommitting or multitasking excessively{'\n'}
-            • Gossiping or speaking without thinking{'\n'}
-            • Avoiding emotional depth in relationships{'\n'}
-            • Being inconsistent or unreliable
+            • Acting impulsively without considering consequences{'\n'}
+            • Being overly competitive or confrontational{'\n'}
+            • Ignoring the opinions and needs of others{'\n'}
+            • Burning out by doing too much too fast
           </Text>
         </View>
       </ScrollView>
@@ -41,7 +41,7 @@ const Gemini = () => {
   );
 };
 
-export default Gemini;
+export default Aries;
 
 const styles = StyleSheet.create({
   container: {
