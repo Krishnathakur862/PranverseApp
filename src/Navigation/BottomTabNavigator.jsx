@@ -14,7 +14,7 @@ import DrawerStack from './DrawerNavigator';
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTabs() {
+export default function BottomTabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -28,7 +28,7 @@ export default function BottomTabs() {
               break;
            
             case 'More':
-              iconName = 'apps'; // or 'menu'
+              iconName = 'apps'; 
               break;
             default:
               iconName = 'ellipse';
