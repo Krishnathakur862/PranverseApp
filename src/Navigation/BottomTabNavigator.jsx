@@ -1,16 +1,10 @@
-
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import MainPointScreen from '../screens/MainPointScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
-
+import ZodiacSigns from './ZodiacSigns';
 import DrawerStack from './DrawerNavigator';
-
- 
 
 const Tab = createBottomTabNavigator();
 
@@ -26,9 +20,11 @@ export default function BottomTabs() {
             case 'Dashboard':
               iconName = 'grid';
               break;
-           
+            case 'ZodiacSigns':
+              iconName = 'planet'; // You can use 'star' or 'sparkles' as well
+              break;
             case 'More':
-              iconName = 'apps'; // or 'menu'
+              iconName = 'apps';
               break;
             default:
               iconName = 'ellipse';
@@ -45,6 +41,7 @@ export default function BottomTabs() {
       })}
     >
       <Tab.Screen name="Dashboard" component={MainPointScreen} />
+      <Tab.Screen name="ZodiacSigns" component={ZodiacSigns} />
       <Tab.Screen name="More" component={DrawerStack} />
     </Tab.Navigator>
   );

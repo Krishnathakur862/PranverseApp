@@ -1,4 +1,6 @@
-  import React from 'react';
+
+ 
+ import React from 'react';
 import {
   View,
   Text,
@@ -37,23 +39,7 @@ const ZodiacSigns = ({ navigation }) => {
           <TouchableOpacity
             key={index}
             style={styles.card}
-            onPress={() => {
-              if (sign === 'Gemini') {
-                navigation.navigate('Gemini');
-              } else if (sign === 'Aries') {
-                navigation.navigate('Aries');
-              } 
-              else if (sign === 'Taurus') {
-  navigation.navigate('Taurus');
-}
-else if (sign === 'Cancer') {
-  navigation.navigate('Cancer');
-}
-
-else {
-                navigation.navigate('ZodiacDetail', { sign });
-              }
-            }}
+            onPress={() => navigation.navigate(sign)}
           >
             <Text style={styles.cardText}>{sign}</Text>
             <Text style={styles.arrow}>➡️</Text>
@@ -95,3 +81,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
+
+
