@@ -15,7 +15,7 @@ export default function ProfileScreen({ navigation }) {
 
       <View style={styles.profileImagePlaceholder}>
         <Image
-          source={require('../assets/krish2.jpg')}
+          source={require('../assets/meditation.jpg')}
           style={styles.profileImage}
         />
       </View>

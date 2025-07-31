@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import {
   View,
@@ -12,6 +10,8 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function LoginScreen({ navigation }) {
@@ -43,13 +43,34 @@ export default function LoginScreen({ navigation }) {
     return valid;
   };
 
-  const handleLogin = () => {
-    if (!validate()) return;
+  const handleLogin = async () => {
+  if (!validate()) return;
 
-    // Simulate login success
-    console.log(`Login successful for: ${email}`);
-    navigation.navigate('ReadyToHeal');
-  };
+  try {
+    const userCredential = await auth().signInWithEmailAndPassword(email, password);
+    console.log('Login successful:', userCredential.user);
+
+    // You can pass user data if needed
+    navigation.navigate('ReadyToHeal', {
+      email: userCredential.user.email,
+      uid: userCredential.user.uid,
+    });
+  } catch (error) {
+    console.log(error);
+
+    if (error.code === 'auth/user-not-found') {
+      setErrors(prev => ({ ...prev, email: 'No user found with this email.' }));
+    } else if (error.code === 'auth/wrong-password') {
+      setErrors(prev => ({ ...prev, password: 'Incorrect password.' }));
+    } else if (error.code === 'auth/invalid-email') {
+      setErrors(prev => ({ ...prev, email: 'Invalid email address.' }));
+    } else {
+      // For any other errors
+      alert('Login Error: ' + error.message);
+    }
+  }
+};
+
 
   return (
     <ImageBackground

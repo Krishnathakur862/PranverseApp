@@ -27,9 +27,7 @@ const MainPointScreen = () => {
       
 
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        <Text style={styles.welcomeText}>Welcome to Pranverse ✨</Text>
 
-        {/* Feature Rows */}
         <View style={styles.row}>
           <FeatureCard title="Services" icon="hands-pray" onPress={() => navigation.navigate('Services')} />
           <FeatureCard title="Products" icon="shopping" onPress={() => navigation.navigate('Products')} />
