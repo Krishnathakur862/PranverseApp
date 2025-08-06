@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 
 import {
   View,
@@ -8,6 +9,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ImageBackground,
+
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -49,15 +51,24 @@ export default function SignupScreen({ navigation }) {
     return valid;
   };
 
-  const handleSignup = async () => {
+ 
+
+const handleSignup = async () => {
   if (!validate()) return;
 
   try {
     const userCredential = await auth().createUserWithEmailAndPassword(email, password);
-    console.log('User created:', userCredential.user);
+    const { uid } = userCredential.user;
 
-    // You can also save the username to Firebase Realtime Database or Firestore if needed.
+    // Save to Firebase Realtime Database
+    await database()
+      .ref(`/users/${uid}`)
+      .set({
+        username,
+        email,
+      });
 
+    console.log('User data saved!');
     navigation.navigate('Login');
   } catch (error) {
     console.log(error);
@@ -72,9 +83,10 @@ export default function SignupScreen({ navigation }) {
 };
 
 
+
   return (
     <ImageBackground
-      source={require('../assets/welcome-bg.jpg')}
+      source={require('../assets/bg2.jpg')}
       style={styles.bg}
     >
       <Text style={styles.title}>Create Account</Text>
@@ -182,13 +194,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '600',
-    color: '#B88A3B',
+    color: '#ffff',
     textAlign: 'center',
     marginBottom: 20,
   },
   container: {
     padding: 20,
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: 'rgba(82, 70, 70, 0.3)',
     borderRadius: 16,
   },
   inputWrapper: {
@@ -221,16 +233,16 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   termsText: {
-    color: '#555',
+    color: '#ffff',
     fontSize: 13,
   },
   termsLink: {
-    color: '#ba7c11ff',
+    color: '#ffff',
     fontSize: 13,
     textDecorationLine: 'underline',
   },
   button: {
-    backgroundColor: '#F6AFAF',
+    backgroundColor: '#5c51baff',
     paddingVertical: 14,
     borderRadius: 30,
     alignItems: 'center',
@@ -242,22 +254,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   loginText: {
-    color: '#141414ff',
+    color: '#ffff',
     fontSize: 14,
     textAlign: 'center',
     marginTop: 6,
+    textDecorationLine: 'underline'
   },
   skipButton: {
     position: 'absolute',
     right: 20,
     bottom: 40,
-    backgroundColor: '#F6AFAF',
+    backgroundColor: '#5c51baff',
     paddingVertical: 14,
     paddingHorizontal: 28,
     borderRadius: 30,
-    shadowColor: '#F6AFAF',
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
-    elevation: 3,
+    
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ImageBackground } from 'react-native';
 
 const notifications = [
   { id: '1', message: 'Your healing session is confirmed for tomorrow.' },
@@ -9,44 +9,57 @@ const notifications = [
 
 const NotificationScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Notifications</Text>
-      <FlatList
-        data={notifications}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.notificationCard}>
-            <Text style={styles.notificationText}>{item.message}</Text>
-          </View>
-        )}
-      />
-    </View>
+    <ImageBackground
+      source={require('../assets/bg2.jpg')} // Change to your spiritual background image
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.header}>Notifications</Text>
+        <FlatList
+          data={notifications}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.card}>
+              <Text style={styles.message}>{item.message}</Text>
+            </View>
+          )}
+        />
+      </View>
+    </ImageBackground>
   );
 };
 
 export default NotificationScreen;
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    backgroundColor: '#FFFBEF',
+  },
+  overlay: {
+    flex: 1,
     padding: 20,
   },
   header: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#B88A3B',
+    color: '#ffffffff',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 25,
   },
-  notificationCard: {
-    backgroundColor: '#fff',
-    padding: 15,
-    borderRadius: 15,
-    marginBottom: 10,
+  card: {
+    backgroundColor: 'rgba(57, 54, 54, 0.3)',
+    borderRadius: 18,
+    padding: 16,
+    marginBottom: 14,
+        borderRadius:16,
+
+  
+    
   },
-  notificationText: {
+  message: {
     fontSize: 16,
-    color: '#444',
+    color: '#ffffffff',
+    fontWeight: '500',
   },
 });

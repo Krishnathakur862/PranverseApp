@@ -4,11 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import MainPointScreen from '../screens/MainPointScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
 
 import DrawerStack from './DrawerNavigator';
+import CalendarScreen from '../screens/CalenderScreen';
 
  
 
@@ -34,18 +32,20 @@ export default function BottomTabNavigator() {
               iconName = 'ellipse';
           }
 
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Ionicons name={iconName} size={size} color={'#5c51baff'}/>;
         },
         tabBarStyle: {
-          height: 60,
+          height: 50,
         },
         tabBarLabelStyle: {
-          fontSize: 10,
+          fontSize: 8,
         },
       })}
     >
       <Tab.Screen name="Dashboard" component={MainPointScreen} />
       <Tab.Screen name="More" component={DrawerStack} />
+        <Tab.Screen name="CalendarScreen" component={CalendarScreen} />
+
     </Tab.Navigator>
   );
 }

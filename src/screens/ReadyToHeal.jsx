@@ -11,20 +11,20 @@ import {
 const ReadyToHeal = ({ navigation }) => {
   return (
     <ImageBackground
-      source={require('../assets/welcome-bg.jpg')}
+      source={require('../assets/bg2.jpg')}
       style={styles.bg}
       resizeMode="cover"
     >
       <StatusBar translucent backgroundColor="transparent" />
       <View style={styles.overlay}>
-        <Text style={styles.heading}>Ready to Heal?</Text>
-        <Text style={styles.subheading}>Let the journey begin</Text>
+        <Text style={styles.heading}>Astrology</Text>
+        <Text style={styles.subheading}>Your Personal Horoscope in your Mobile.Know more about yourself with our expert calculation</Text>
 
         <TouchableOpacity
   style={styles.button}
   onPress={() => navigation.navigate('Dashboard')} 
 >
-  <Text style={styles.buttonText}>Start Healing</Text>
+  <Text style={styles.buttonText}>Get Started</Text>
 </TouchableOpacity>
 
       </View>
@@ -43,33 +43,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 30,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    marginTop:120
   },
   heading: {
     fontSize: 38,
     fontWeight: 'bold',
-    color: '#B88A3B',
+    color: '#ffffffff',
     marginBottom: 10,
     textAlign: 'center',
     textShadowColor: '#fff0cc',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 6,
+    
   },
   subheading: {
-    fontSize: 18,
-    color: '#5F5F5F',
+    fontSize: 14,
+    color: '#ffffffff',
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 20,
   },
   button: {
-    backgroundColor: '#F6AFAF',
+    backgroundColor: '#5c51baff',
     paddingVertical: 14,
     paddingHorizontal: 40,
     borderRadius: 30,
-    shadowColor: '#B88A3B',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 6,
+    
+    
   },
   buttonText: {
     color: '#FFFFFF',
