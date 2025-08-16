@@ -10,7 +10,7 @@ const notifications = [
 const NotificationScreen = () => {
   return (
     <ImageBackground
-      source={require('../assets/bg2.jpg')} // Change to your spiritual background image
+      source={require('../assets/bg2.jpg')} 
       style={styles.background}
       resizeMode="cover"
     >

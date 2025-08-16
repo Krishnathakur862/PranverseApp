@@ -54,14 +54,14 @@ export default function SettingsScreen({ navigation }) {
   }
 
   try {
-    // Delete from Firebase Realtime Database
+    
     await database().ref(`/users/${currentUser.uid}`).remove();
 
-    // Delete the account from Firebase Auth
+    
     await currentUser.delete();
 
     Alert.alert('Account Deleted', 'Your account has been successfully deleted.');
-    navigation.replace('LoginScreen'); // or any login-related screen
+    navigation.replace('LoginScreen'); 
 
   } catch (error) {
     if (error.code === 'auth/requires-recent-login') {
@@ -89,7 +89,7 @@ export default function SettingsScreen({ navigation }) {
         <Text style={styles.header}>Settings</Text>
         <View style={styles.card}>
           <View style={styles.itemRow}>
-            <Icon name="notifications-outline" size={22} color={'gold'} />
+            <Icon name="notifications-outline" size={22} color={'white'} />
             <Text style={styles.itemText}>Notifications</Text>
             <Switch
               value={notificationsEnabled}
@@ -101,7 +101,7 @@ export default function SettingsScreen({ navigation }) {
             style={styles.itemRow}
             onPress={() => navigation.navigate('Terms')}
           >
-            <Icon name="document-text-outline" size={22} color={'blue'} />
+            <Icon name="document-text-outline" size={22} color={'white'} />
             <Text style={styles.itemText}>Terms & Conditions</Text>
           </TouchableOpacity>
 
@@ -111,7 +111,7 @@ export default function SettingsScreen({ navigation }) {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.itemRow} onPress={handleLogout}>
-            <Icon name="log-out-outline" size={22} color="orange" />
+            <Icon name="log-out-outline" size={22} color="white" />
             <Text style={[styles.itemText]}>Logout</Text>
           </TouchableOpacity>
         </View>

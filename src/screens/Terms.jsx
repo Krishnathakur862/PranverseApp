@@ -77,29 +77,34 @@ export default function Terms() {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(15, 12, 33, 0.95)',
   },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#FFD700',
   },
   date: {
     fontSize: 14,
-    color: '#666',
+    color: '#FFD700',
     marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
     marginTop: 20,
+    color: '#FFD700',
   },
   text: {
     fontSize: 16,
     lineHeight: 22,
     marginTop: 5,
+    color: '#fff',
   },
   email:{
-    color:'blue'
+    color:'blue',
+    alignContent:'center',
+    textDecorationLine: 'underline',
   }
 });

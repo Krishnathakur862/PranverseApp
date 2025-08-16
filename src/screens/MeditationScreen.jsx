@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import {
   View,
@@ -10,18 +11,19 @@ import {
   KeyboardAvoidingView,
   Platform,
   Vibration,
-  Alert,
 } from 'react-native';
 
 export default function MeditationScreen() {
-  const [secondsLeft, setSecondsLeft] = useState(60); 
+  const [secondsLeft, setSecondsLeft] = useState(60);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
 
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false); // For setting time
+  const [finishModalVisible, setFinishModalVisible] = useState(false); // For session complete
   const [minutesInput, setMinutesInput] = useState('');
   const [secondsInput, setSecondsInput] = useState('');
-  const [initialTime, setInitialTime] = useState(60); 
+  const [initialTime, setInitialTime] = useState(60);
+
   const startTimer = () => {
     if (!isRunning && secondsLeft > 0) {
       setIsRunning(true);
@@ -30,8 +32,12 @@ export default function MeditationScreen() {
           if (prev <= 1) {
             clearInterval(intervalRef.current);
             setIsRunning(false);
-            Vibration.vibrate(500);
-            Alert.alert('Done!', 'Your meditation session is complete.');
+
+            
+            Vibration.vibrate(2000);
+
+            
+            setFinishModalVisible(true);
             return 0;
           }
           return prev - 1;
@@ -57,7 +63,7 @@ export default function MeditationScreen() {
     const totalSeconds = mins * 60 + secs;
     if (totalSeconds > 0) {
       setSecondsLeft(totalSeconds);
-      setInitialTime(totalSeconds); 
+      setInitialTime(totalSeconds);
       setModalVisible(false);
       setMinutesInput('');
       setSecondsInput('');
@@ -69,12 +75,12 @@ export default function MeditationScreen() {
   const formattedTime = () => {
     const minutes = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
     const seconds = String(secondsLeft % 60).padStart(2, '0');
-    return ${minutes}:${seconds};
+    return `${minutes}:${seconds}`;
   };
 
   return (
     <ImageBackground
-      source={require('../assets/meditation.jpg')}
+      source={require('../assets/bg2.jpg')}
       style={styles.background}
     >
       <View style={styles.overlay}>
@@ -104,16 +110,11 @@ export default function MeditationScreen() {
               <Text style={styles.buttonText}>Set Timer</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={[styles.button, styles.resetButton]}
-              onPress={resetTimer}
-            >
-              <Text style={styles.buttonText}>Reset</Text>
-            </TouchableOpacity>
+            
           </>
         )}
 
-      
+        {/* Set Time Modal */}
         <Modal
           visible={modalVisible}
           transparent={true}
@@ -134,7 +135,7 @@ export default function MeditationScreen() {
                   value={minutesInput}
                   onChangeText={setMinutesInput}
                 />
-                <Text style={{ color: '#fff', fontSize: 24 }}>:</Text>
+                <Text style={{ color: '#ffffffff', fontSize: 24 }}>:</Text>
                 <TextInput
                   placeholder="Sec"
                   keyboardType="number-pad"
@@ -151,6 +152,29 @@ export default function MeditationScreen() {
               </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>
+        </Modal>
+
+        {/* Session Complete Modal */}
+        <Modal
+          visible={finishModalVisible}
+          transparent={true}
+          animationType="fade"
+        >
+          <View style={styles.finishModal}>
+            <Text style={styles.finishText}>✨ Session Complete ✨</Text>
+            <Text style={styles.finishSubText}>
+              Take a deep breath and feel your calm.
+            </Text>
+            <TouchableOpacity
+              style={styles.finishButton}
+              onPress={() => {
+                setFinishModalVisible(false);
+                resetTimer();
+              }}
+            >
+              <Text style={styles.finishButtonText}>Restart</Text>
+            </TouchableOpacity>
+          </View>
         </Modal>
       </View>
     </ImageBackground>
@@ -183,22 +207,13 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   button: {
-    backgroundColor: '#5c51baff',
+    backgroundColor: '#5c51ba',
     paddingVertical: 14,
     paddingHorizontal: 30,
     borderRadius: 30,
     width: 240,
     alignItems: 'center',
     marginVertical: 8,
-  },
-  pauseButton: {
-    backgroundColor: '#5c51baff',
-  },
-  secondaryButton: {
-    backgroundColor: '#5c51baff',
-  },
-  resetButton: {
-    backgroundColor: '#5c51baff',
   },
   buttonText: {
     color: '#fff',
@@ -232,7 +247,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: 80,
-    backgroundColor: '#fff',
+    backgroundColor: '#161414ff',
     padding: 10,
     borderRadius: 8,
     textAlign: 'center',
@@ -241,14 +256,43 @@ const styles = StyleSheet.create({
   modalButton: {
     backgroundColor: '#B88A3B',
     paddingVertical: 10,
-    paddingHorizontal: 10,
     borderRadius: 8,
     width: 100,
-    margin: 5,
     alignItems: 'center',
   },
   modalButtonText: {
     color: '#fff',
+    fontWeight: 'bold',
+  },
+  finishModal: {
+    flex: 1,
+    backgroundColor: 'rgba(7, 7, 7, 0.85)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 30,
+  },
+  finishText: {
+    fontSize: 32,
+    color: '#fff',
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  finishSubText: {
+    fontSize: 18,
+    color: '#ccc',
+    textAlign: 'center',
+    marginBottom: 30,
+  },
+  finishButton: {
+    backgroundColor: '#5c51ba',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 25,
+  },
+  finishButtonText: {
+    color: '#fff',
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });
